@@ -8,6 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.NoSuchElementException;
 
+/**
+ * API Key 撤銷服務。
+ * 將指定 ID 的金鑰狀態變更為 REVOKED。
+ */
 @Service
 public class RevokeApiKeyService {
 
@@ -17,6 +21,10 @@ public class RevokeApiKeyService {
         this.apiKeyRecordStore = apiKeyRecordStore;
     }
 
+    /**
+     * 撤銷指定 ID 的 API Key。
+     * 若 ID 不存在，丟出 NoSuchElementException。
+     */
     @Transactional
     public RevokeApiKeyResponse revoke(Long id, String updatedUser) {
         ApiKey apiKey = apiKeyRecordStore.revoke(id, updatedUser.trim())
@@ -27,7 +35,6 @@ public class RevokeApiKeyService {
                 apiKey.vendorName(),
                 apiKey.status().name().toLowerCase(),
                 apiKey.updatedUser(),
-                apiKey.updatedAt()
-        );
+                apiKey.updatedAt());
     }
 }

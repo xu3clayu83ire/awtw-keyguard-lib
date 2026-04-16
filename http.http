@@ -1,0 +1,21 @@
+POST http://127.0.0.1:8085/api/v1/keys
+Content-Type: application/json
+
+{
+  "vendorName": "Vendor D",
+  "allowIps": ["127.0.0.1", "10.0.0.1"],
+  "createdUser": "systemAdmin",
+  "prefix": "amsk"
+}
+####
+
+GET http://127.0.0.1:8085/api/v1/keys/1
+X-API-KEY: amsk_5e03eafa0af1f04ffd5ade71d3d2016014ceabf744b0c28a1e86f65a025f1558
+####
+
+PATCH http://127.0.0.1:8085/api/v1/keys/1/revoke
+Content-Type: application/json
+
+{
+  "updatedUser": "systemAdmin"
+}

@@ -23,12 +23,14 @@ spring:
   h2:
     console:
       enabled: true
+      settings:
+        web-allow-others: true # Allow access from outside the container
 
 server:
   port: ${PORT:8080}
 
 keyguard:
-  prefix: ${KEYGUARD_PREFIX:nslsk}
-  protected-path-prefix: /api/v1/todolist
+  prefix: ${KEYGUARD_PREFIX:amsk}
+  protected-path-prefix: /api/v1/keys
   forwarded-for-header: X-Forwarded-For
   api-key-header: X-API-KEY

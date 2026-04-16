@@ -32,14 +32,11 @@ jobs:
           java-version: "21"
           cache: maven
 
-      - name: Make wrapper executable
-        run: chmod +x mvnw
-
       - name: Compile
-        run: ./mvnw -B -DskipTests clean compile
+        run: mvn -B -DskipTests clean compile
 
       - name: Test
-        run: ./mvnw -B test
+        run: mvn -B test
 
       - name: Notify failure on PR
         if: failure() && github.event_name == 'pull_request'
